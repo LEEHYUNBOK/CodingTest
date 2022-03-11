@@ -1,0 +1,15 @@
+static final int C[] = {1, 2, 3, 4, 5};
+
+static void select(int[] selected, int index, int count) {
+   if (count == 2) {
+       출력
+      return;
+   }
+   if (index >= A.length) return;
+   
+   select(selected, index + 1, count);
+   
+   int[] selected2 = selected.clone();
+   selected2[index] = 1;
+   select(selected2, index + 1, count + 1);
+}
