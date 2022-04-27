@@ -1,4 +1,11 @@
-import java.util.*;
+/* 
+  문제 : ACM Craft
+  https://www.acmicpc.net/problem/1005
+*/
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 class Building {
 	class Node {
@@ -54,7 +61,7 @@ class Building {
 
 }
 
-public class ACMCraft {
+public class B1005 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -96,15 +103,15 @@ public class ACMCraft {
 			// 건설해야할 건물의 번호
 			int targetW = sc.nextInt();
 
-			for (int i = 1; i < buildingN + 1; i++) {
-				System.out.print(order[i] + " ");
-			}
+//			for (int i = 1; i < buildingN + 1; i++) {
+//				System.out.print(order[i] + " ");
+//			}
 			// 건물 시간 출력
 
-			System.out.println();
-			System.out.println();
-			building.Print();
-			System.out.println();
+//			System.out.println();
+//			System.out.println();
+//			building.Print();
+//			System.out.println();
 			System.out.println(minTime(building, targetW, order));
 
 		}
@@ -137,23 +144,23 @@ public class ACMCraft {
 					continue;
 				// 만약에 가리키는 것이 있으면
 				if (building.exist(stand, i) != null) {
-					System.out.println(stand + ", " + i + " = 존재");
+//					System.out.println(stand + ", " + i + " = 존재");
 					// 가리킨 건물 i의 가리켜지는 횟수를 하나 줄인다.
 					order[i] -= 1;
 					// 건물 i까지의 시간이 stand로부터 지어지는 경로의 시간보다 적다면
-					// stand로부터 오는 경로의 시간이 끝나야 i가 지어지므로 
+					// stand로부터 오는 경로의 시간이 끝나야 i가 지어지므로
 					// i까지의 걸리는 시간이 더 큰 것으로 넣는다.
 					targetTime[i] = (targetTime[i]) < (building.exist(stand, stand).time + targetTime[stand])
 							? (building.exist(stand, stand).time + targetTime[stand])
 							: targetTime[i];
-					System.out.println("targetTime[" + i + "] = " + targetTime[i]);
+//					System.out.println("targetTime[" + i + "] = " + targetTime[i]);
 					// 만약에 가리켜지는 것이 없으면 queue에 넣는다.
 					if (order[i] == 0)
 						queue.add(i);
 				}
 			}
 		}
-		
+
 		// 끝나서 이제 출력을 해야할때 W까지 지어지는 시간과 W가 지어지는 시간을 더해서 return한다.
 		return targetTime[targetW] + building.exist(targetW, targetW).time;
 	}
