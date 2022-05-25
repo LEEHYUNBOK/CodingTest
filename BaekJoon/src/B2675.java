@@ -15,8 +15,11 @@ public class B2675 {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int n = Integer.parseInt(st.nextToken());
 			String[] s = st.nextToken().split("");
-			for (String j : s)
-				sb.append(j.repeat(n));
+			for (String j : s) {
+				for (int k = 0; k < n; k++)
+					sb.append(j);
+			}
+
 			sb.append("\n");
 		}
 		System.out.println(sb);

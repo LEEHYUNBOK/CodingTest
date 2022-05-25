@@ -11,8 +11,13 @@ public class B2439 {
 
 		int n = Integer.parseInt(br.readLine()); // I
 
-		for (int i = 1; i <= n; sb.append(" ".repeat(n - i) + "*".repeat(i++) + "\n"))
-			;
+		for (int i = 1; i <= n; i++) {
+			for (int j = 0; j < n - i; j++)
+				sb.append(" ");
+			for (int j = 0; j < i; j++)
+				sb.append("*");
+			sb.append("\n");
+		}
 		System.out.println(sb);
 	}
 }

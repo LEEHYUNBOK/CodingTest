@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 
 public class B2908 {
 	// 문제 : 상수
+
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 선언
