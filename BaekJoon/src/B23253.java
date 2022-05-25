@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 class Stack {
 
@@ -23,14 +23,14 @@ class Stack {
 	}
 
 	public Integer print() {
-		if(size == 0)
+		if (size == 0)
 			return null;
 		return stack[size - 1];
 	}
 }
 
-public class StackBest {
-
+public class B23253 {
+	// 문제 : 자료구조는 정말 최고야
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
@@ -41,7 +41,7 @@ public class StackBest {
 
 		// 더미 배열
 		Stack[] heapCount = new Stack[bookPiles];
-		
+
 		// 더미 갯수
 		for (int heap = 0; heap < bookPiles; heap++) {
 			System.out.println("한 더미의 책 개수");
@@ -53,7 +53,7 @@ public class StackBest {
 			for (int number = 0; number < count; number++) {
 //				System.out.print("번호 = ");
 				int book = sc.nextInt();
-				if(book > bookCount)
+				if (book > bookCount)
 					continue;
 				heapCount[heap].push(book);
 			}
@@ -75,12 +75,12 @@ public class StackBest {
 				System.out.println("No");
 				break;
 			}
-			System.out.println(thNum + "번째"+ " , " + max + "회전");
+			System.out.println(thNum + "번째" + " , " + max + "회전");
 			// 번호가 다음 번호랑 같으면
 			if (num == heapCount[thNum].print()) {
 //				System.out.println("찾았다");				
 //				heapCount[thNum].poll();
-				System.out.println("번호"+heapCount[thNum].poll());
+				System.out.println("번호" + heapCount[thNum].poll());
 				if (num == bookCount) {
 					System.out.println("Yes");
 					break;
@@ -88,12 +88,10 @@ public class StackBest {
 				max = 1;
 				thNum++;
 				num++;
-			}
-			else {
+			} else {
 				thNum++;
 				max++;
 			}
-			
 
 		}
 

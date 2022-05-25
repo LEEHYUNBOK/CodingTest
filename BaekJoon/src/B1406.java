@@ -1,7 +1,7 @@
-import java.io.*;
-import java.util.*;
-
-
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 class ENode {
 	class Node {
@@ -31,21 +31,21 @@ class ENode {
 	}
 
 	public void L() {
-		if(current.left ==null)
+		if (current.left == null)
 			return;
 		current = current.left;
 	}
 
 	public void D() {
-		if(current.right == null)
+		if (current.right == null)
 			return;
 		current = current.right;
 	}
 
 	public void B() {
-		if(current.spelling == null)
+		if (current.spelling == null)
 			return;
-		if(current.right == null) {
+		if (current.right == null) {
 			current.left.right = null;
 			current = current.left;
 			return;
@@ -57,41 +57,43 @@ class ENode {
 
 	public void P(String spell) {
 		Node newNode = new Node(spell);
-		if(current.right == null) {
+		if (current.right == null) {
 			current.right = newNode;
 			newNode.left = current;
 			current = current.right;
-		}
-		else {
+		} else {
 			current.right.left = newNode;
-			newNode.right =	current.right;
+			newNode.right = current.right;
 			current.right = newNode;
 			newNode.left = current;
 			current = newNode;
 		}
 	}
-	
-	String result="";
+
+	String result = "";
+
 	// 출력을 위한 함수
-	public String t(){
+	public String t() {
 		print(root.right);
 		return result;
 	}
-	public void print(Node k){
-		if(k == null)
+
+	public void print(Node k) {
+		if (k == null)
 			return;
 		result = result.concat(k.spelling);
 		print(k.right);
 	}
 }
 
-public class Editor {
+public class B1406 {
+	// 문제 : 에디터
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		String spelling =sc.next(); // String
-			
+		String spelling = sc.next(); // String
+
 		ENode eNode = new ENode();
 		eNode.add(spelling);
 		int num = sc.nextInt(); // Int
@@ -114,7 +116,7 @@ public class Editor {
 			}
 		}
 		bw.write(eNode.t());
-		bw.close();   //스트림을 닫음
+		bw.close(); // 스트림을 닫음
 	}
 
 }

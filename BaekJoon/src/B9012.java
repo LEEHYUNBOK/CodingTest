@@ -1,6 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
 
-class Stack {
+class SttStack {
 
 	String[] stack;
 
@@ -29,24 +29,25 @@ class Stack {
 	}
 
 	public void print() {
-		for(int i =0; i < size;i++) {
+		for (int i = 0; i < size; i++) {
 			System.out.print(stack[i]);
 		}
 	}
 }
 
-public class VPS {
+public class B9012 {
+	// ¹®Á¦ : °ýÈ£
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("VPS ¼ö");
 		int VPSNum = sc.nextInt();
-		Stack[] VPS = new Stack[VPSNum];
+		SttStack[] VPS = new SttStack[VPSNum];
 		String concatenation;
 		for (int i = 0; i < VPSNum; i++) {
 			concatenation = sc.next();
-			VPS[i] = new Stack();
+			VPS[i] = new SttStack();
 			VPS[i].Stack(concatenation);
 		}
 //		for (int i = 0; i < VPSNum; i++) {
@@ -55,15 +56,15 @@ public class VPS {
 //		}
 		for (int i = 0; i < VPSNum; i++) {
 			int num = 0;
-			while(true) {
+			while (true) {
 //				System.out.println("µé°¬¾î");
 				String n = VPS[i].poll();
-				if(n == null)
+				if (n == null)
 					break;
 				if (n.equals(")"))
-					num+=1;
+					num += 1;
 				else if (n.equals("("))
-					num-=1;
+					num -= 1;
 				if (num < 0)
 					break;
 			}

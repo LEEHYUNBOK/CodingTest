@@ -1,5 +1,8 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 class KeyNode {
 	class Node {
@@ -9,7 +12,7 @@ class KeyNode {
 
 		public Node(String password) { // 노드에 저장
 			this.password = password;
-			left = null; 
+			left = null;
 			right = null;
 		}
 	}
@@ -23,31 +26,31 @@ class KeyNode {
 
 		for (String a : role) {
 			Node newNode = new Node(a);
-			
+
 			if (current.password == null && (a.equals("<") || a.equals(">") || a.equals("-"))) {
 				continue;
 			}
-			
+
 			// 왼쪽 화살표이면
 			if (a.equals("<")) {
-				if(current.left ==null)
+				if (current.left == null)
 					continue;
 				current = current.left;
 				continue;
 			}
-			
+
 			// 오른쪽 화살표이면
 			else if (a.equals(">")) {
-				if(current.right == null)
+				if (current.right == null)
 					continue;
 				current = current.right;
 				continue;
 			}
-			
+
 			// 백스페이스면
 			else if (a.equals("-")) {
 				Node del = current.left;
-				if(current.right == null) {
+				if (current.right == null) {
 					current.left.right = null;
 					current = del;
 					continue;
@@ -59,14 +62,13 @@ class KeyNode {
 			}
 			// 화살표나 백스페이스가 아니라 문자 아무거나 들어오면
 			else {
-				if(current.right == null) {
+				if (current.right == null) {
 					current.right = newNode;
 					newNode.left = current;
 					current = current.right;
-				}
-				else {
+				} else {
 					current.right.left = newNode;
-					newNode.right =	current.right;
+					newNode.right = current.right;
 					current.right = newNode;
 					newNode.left = current;
 					current = newNode;
@@ -75,22 +77,25 @@ class KeyNode {
 			}
 		}
 	}
-	String result="";
+
+	String result = "";
+
 	// 출력을 위한 함수
-	public String t(){
+	public String t() {
 		print(root.right);
 		return result;
 	}
-	public void print(Node k){
-		if(k == null)
+
+	public void print(Node k) {
+		if (k == null)
 			return;
 		result = result.concat(k.password);
 		print(k.right);
 	}
 }
 
-public class Keylogger {
-
+public class B5397 {
+	// 문제 : 키로거
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		// TODO Auto-generated method stub
 //		Scanner sc = new Scanner(System.in);
@@ -116,17 +121,16 @@ public class Keylogger {
 //		}
 
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in)); 
-		int num = Integer.parseInt(bf.readLine()); //Int
-		
-		
-		for(int i = 0; i < num; i++) {
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		int num = Integer.parseInt(bf.readLine()); // Int
+
+		for (int i = 0; i < num; i++) {
 			KeyNode key = new KeyNode();
-			String password = bf.readLine(); //String
+			String password = bf.readLine(); // String
 			key.result(password);
-			bw.write(key.t()+"\n");
+			bw.write(key.t() + "\n");
 		}
-		bw.close();   //스트림을 닫음
+		bw.close(); // 스트림을 닫음
 	}
 
 }
