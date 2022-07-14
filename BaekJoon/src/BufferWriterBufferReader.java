@@ -14,10 +14,12 @@ public class BufferWriterBufferReader {
 		int bfn = Integer.parseInt(br.readLine()); // 문자열로 입력 받은 것을 숫자로 변환하여 저장 (공백 미포함)
 
 		// 공백을 기준으로 입력 받을 수 있게 해주는 모듈
-		StringTokenizer st = new StringTokenizer(br.readLine()); // Ex) "1 2"이라고 입력하면 공백을 기준으로 1,2 형태로 저장됨 (defalt가 "
-																	// "이다)
-		int stx = Integer.parseInt(st.nextToken()); // st.nextToken()을 출력한다면 st 안에 있는 순서대로 출력
-		int sty = Integer.parseInt(st.nextToken()); // st.nextToken()을 출력한다면 st 안에 있는 순서대로 출력
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		// Ex) "1 2"이라고 입력하면 공백을 기준으로 1,2 형태로 저장됨 (defalt가 " "이다)
+		int stx = Integer.parseInt(st.nextToken());
+		// st.nextToken()을 출력한다면 st 안에 있는 순서대로 출력
+		int sty = Integer.parseInt(st.nextToken());
+		// st.nextToken()을 출력한다면 st 안에 있는 순서대로 출력
 
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); // 할당된 버퍼에 값 넣어주기
 
